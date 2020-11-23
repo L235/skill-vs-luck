@@ -53,7 +53,7 @@ const DisplayResults = ({ drumX, drumY, hornX, hornY, boxY, boxZ, tempo }) => {
     adjustment = notes[closest];
   }
 
-  const ahead_or_behind = drums_to_box < horns_to_box ? "ahead" : "behind";
+  const ahead_or_behind = drums_to_box < horns_to_box ? "ahead of" : "behind";
 
   return (
     <div id="results-container">
@@ -74,7 +74,7 @@ const DisplayResults = ({ drumX, drumY, hornX, hornY, boxY, boxZ, tempo }) => {
         <span class="code">
           {adjustment} note {ahead_or_behind}
         </span>{" "}
-        of the drums to make the hornline match
+        the drums to make the hornline match
       </Typography>
     </div>
   );
