@@ -15,6 +15,12 @@ function App() {
 
   const [boxY, setBoxY] = useState(5);
   const [boxZ, setBoxZ] = useState(5);
+  const handleBoxY = (event) => {
+    setBoxY(event.target.value);
+  };
+  const handleBoxZ = (event) => {
+    setBoxZ(event.target.value);
+  };
 
   // tempo
   const [tempo, setTempo] = useState(160);
@@ -53,7 +59,7 @@ function App() {
             type="number"
             variant="outlined"
             value={boxY}
-            onChange={setBoxY}
+            onChange={handleBoxY}
           />
           <TextField
             id="boxZ"
@@ -61,7 +67,7 @@ function App() {
             type="number"
             variant="outlined"
             value={boxZ}
-            onChange={setBoxZ}
+            onChange={handleBoxZ}
           />
         </div>
 
