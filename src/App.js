@@ -68,6 +68,12 @@ function App() {
         <br />
         <TempoSlider tempo={tempo} handleChange={setTempo} />
       </form>
+
+      <p>
+        By Hannah Cussen,{" "}
+        <a href="https://github.com/hcussen/SoundDelay">Repo on GitHub</a>,
+        Deployed with Vercel
+      </p>
     </div>
   );
 }
