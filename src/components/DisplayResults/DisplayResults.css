@@ -1,3 +1,7 @@
+#results-container {
+  width: 500px;
+}
+
 .code {
   font-family: "Courier New", Courier, monospace;
   background-color: gainsboro;

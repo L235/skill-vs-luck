@@ -56,7 +56,7 @@ const DisplayResults = ({ drumX, drumY, hornX, hornY, boxY, boxZ, tempo }) => {
   const ahead_or_behind = drums_to_box < horns_to_box ? "ahead" : "behind";
 
   return (
-    <div>
+    <div id="results-container">
       <Typography variant="p">
         Discrepancy in seconds:{" "}
         <span class="code">{discrepancy_in_seconds.toFixed(4)}</span>
