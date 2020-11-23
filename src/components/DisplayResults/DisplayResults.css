@@ -1,1 +1,7 @@
-
+.code {
+  font-family: "Courier New", Courier, monospace;
+  background-color: gainsboro;
+  color: tomato;
+  font-weight: bolder;
+  padding: 3px;
+}

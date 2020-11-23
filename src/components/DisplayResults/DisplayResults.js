@@ -57,17 +57,25 @@ const DisplayResults = ({ drumX, drumY, hornX, hornY, boxY, boxZ, tempo }) => {
 
   return (
     <div>
-      <Typography variant="h6">Discrepancy in seconds</Typography>
-      <p>{discrepancy_in_seconds.toFixed(4)}</p>
-      <Typography variant="h6">
-        Discrepancy as a percentage of the beat
+      <Typography variant="p">
+        Discrepancy in seconds:{" "}
+        <span class="code">{discrepancy_in_seconds.toFixed(4)}</span>
       </Typography>
-      <p>{(discrepancy_percentage_of_beat * 100).toFixed(0)}%</p>
-      <Typography variant="h6">Adjustment needed</Typography>
-      <p>
-        {adjustment} note {ahead_or_behind} of the drums to make the hornline
-        match
-      </p>
+      <br />
+      <Typography variant="p">
+        Discrepancy as a percentage of the beat:{" "}
+        <span class="code">
+          {(discrepancy_percentage_of_beat * 100).toFixed(0)}%
+        </span>
+      </Typography>
+      <br />
+      <Typography variant="p">
+        Adjustment needed: <br />
+        <span class="code">
+          {adjustment} note {ahead_or_behind}
+        </span>{" "}
+        of the drums to make the hornline match
+      </Typography>
     </div>
   );
 };

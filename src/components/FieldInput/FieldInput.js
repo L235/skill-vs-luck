@@ -18,13 +18,13 @@ const FieldInput = ({
 }) => {
   /* handle input events */
   const handleDragDrum = (e, ui) => {
-    setDrumX(drumX + ui.deltaX);
-    setDrumY(drumY + ui.deltaY);
+    setDrumX(drumX + ui.deltaX / 6);
+    setDrumY(drumY + ui.deltaY / 6);
   };
 
   const handleDragHorn = (e, ui) => {
-    setHornX(hornX + ui.deltaX);
-    setHornY(hornY + ui.deltaY);
+    setHornX(hornX + ui.deltaX / 6);
+    setHornY(hornY - ui.deltaY / 6);
   };
 
   return (
@@ -64,7 +64,8 @@ const FieldInput = ({
       </div>
 
       <p>
-        Drum Position: ( {drumX}, {drumY} ) Horn Position: ( {hornX}, {hornY} )
+        Drum Position: ({drumX.toFixed(0)}, {drumY.toFixed(0)}) Horn Position: (
+        {hornX.toFixed(0)}, {hornY.toFixed(0)})
       </p>
     </div>
   );

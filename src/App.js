@@ -1,17 +1,17 @@
 import React, { useState } from "react";
 import "./App.css";
-import { Header } from "semantic-ui-react";
-import { TextField } from "@material-ui/core";
+import { TextField, Typography } from "@material-ui/core";
 import TempoSlider from "./components/TempoSlider/TempoSlider";
 import FieldInput from "./components/FieldInput/FieldInput";
+import DisplayResults from "./components/DisplayResults/DisplayResults";
 
 function App() {
-  // location variables
+  // location variables - all in yards
   const [drumX, setDrumX] = useState(0);
   const [drumY, setDrumY] = useState(0);
 
   const [hornX, setHornX] = useState(0);
-  const [hornY, setHornY] = useState(108);
+  const [hornY, setHornY] = useState(18);
 
   const [boxY, setBoxY] = useState(5);
   const [boxZ, setBoxZ] = useState(5);
@@ -21,7 +21,18 @@ function App() {
 
   return (
     <div className="app-container">
-      <Header as="h1">Sound Delay</Header>
+      <div id="header">
+        <Typography variant="h4">Sound Delay Demo</Typography>
+        <DisplayResults
+          drumX={drumX}
+          drumY={drumY}
+          hornX={hornX}
+          hornY={hornY}
+          boxY={boxY}
+          boxZ={boxZ}
+          tempo={tempo}
+        />
+      </div>
 
       <FieldInput
         drumX={drumX}
@@ -44,8 +55,6 @@ function App() {
             value={boxY}
             onChange={setBoxY}
           />
-          {/* </div> */}
-          {/* <div className="number-input"> */}
           <TextField
             id="boxZ"
             label="Box Height (yards)"
