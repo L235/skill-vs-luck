@@ -48,12 +48,15 @@ const DisplayResults = ({ drumX, drumY, hornX, hornY, boxY, boxZ, tempo }) => {
   if (discrepancy_percentage_of_beat > 0.5) {
     adjustment = "greater than a half note";
   } else if (discrepancy_percentage_of_beat < 0.015625) {
-    adjustment = "less than a sixth-fourth note";
+    adjustment = "no adjustment from";
   } else {
-    adjustment = notes[closest];
+    adjustment = notes[closest] + " note";
   }
 
-  const ahead_or_behind = drums_to_box < horns_to_box ? "ahead of" : "behind";
+  let ahead_or_behind = drums_to_box < horns_to_box ? "ahead of" : "behind";
+  if (discrepancy_percentage_of_beat < 0.015625) {
+    ahead_or_behind = "";
+  }
 
   return (
     <div id="results-container">
@@ -72,7 +75,7 @@ const DisplayResults = ({ drumX, drumY, hornX, hornY, boxY, boxZ, tempo }) => {
       <Typography variant="p">
         Adjustment needed: <br />
         <span class="code">
-          {adjustment} note {ahead_or_behind}
+          {adjustment} {ahead_or_behind}
         </span>{" "}
         the drums to make the hornline match
       </Typography>

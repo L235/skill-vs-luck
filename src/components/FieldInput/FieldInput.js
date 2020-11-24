@@ -19,7 +19,7 @@ const FieldInput = ({
   /* handle input events */
   const handleDragDrum = (e, ui) => {
     setDrumX(drumX + ui.deltaX / 6);
-    setDrumY(drumY + ui.deltaY / 6);
+    setDrumY(drumY - ui.deltaY / 6);
   };
 
   const handleDragHorn = (e, ui) => {
