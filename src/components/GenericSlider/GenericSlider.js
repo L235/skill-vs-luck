@@ -1,10 +1,9 @@
 import React from "react";
 import { Grid, Typography, Slider, Input } from "@material-ui/core";
-import MusicNoteIcon from "@material-ui/icons/MusicNote";
 import "./GenericSlider.css";
 
 /*droppable field location */
-const GenericSlider = ({ name, value, handleChange, min, max }) => {
+const GenericSlider = ({ name, value, handleChange, min, max, icon }) => {
   const handleSliderChange = (event, newValue) => {
     handleChange(newValue);
   };
@@ -19,9 +18,7 @@ const GenericSlider = ({ name, value, handleChange, min, max }) => {
         {name}
       </Typography>
       <Grid container spacing={2} alignItems="center">
-        <Grid item>
-          <MusicNoteIcon />
-        </Grid>
+        <Grid item>{icon}</Grid>
         <Grid item xs>
           <Slider
             value={typeof value === "number" ? value : 0}
