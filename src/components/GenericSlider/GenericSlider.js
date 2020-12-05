@@ -1,10 +1,10 @@
 import React from "react";
 import { Grid, Typography, Slider, Input } from "@material-ui/core";
 import MusicNoteIcon from "@material-ui/icons/MusicNote";
-import "./TempoSlider.css";
+import "./GenericSlider.css";
 
 /*droppable field location */
-const TempoSlider = ({ tempo, handleChange }) => {
+const GenericSlider = ({ name, value, handleChange, min, max }) => {
   const handleSliderChange = (event, newValue) => {
     handleChange(newValue);
   };
@@ -16,7 +16,7 @@ const TempoSlider = ({ tempo, handleChange }) => {
   return (
     <div>
       <Typography id="input-slider" gutterBottom>
-        Tempo
+        {name}
       </Typography>
       <Grid container spacing={2} alignItems="center">
         <Grid item>
@@ -24,22 +24,22 @@ const TempoSlider = ({ tempo, handleChange }) => {
         </Grid>
         <Grid item xs>
           <Slider
-            value={typeof tempo === "number" ? tempo : 0}
+            value={typeof value === "number" ? value : 0}
             onChange={handleSliderChange}
             aria-labelledby="input-slider"
-            max={250}
-            min={0}
+            max={max}
+            min={min}
           />
         </Grid>
         <Grid item>
           <Input
-            value={tempo}
+            value={value}
             margin="dense"
             onChange={handleInputChange}
             inputProps={{
               step: 1,
-              min: 0,
-              max: 250,
+              min: { min },
+              max: { max },
               type: "number",
               "aria-labelledby": "input-slider",
             }}
@@ -50,4 +50,4 @@ const TempoSlider = ({ tempo, handleChange }) => {
   );
 };
 
-export default TempoSlider;
+export default GenericSlider;

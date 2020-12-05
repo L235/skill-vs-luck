@@ -1,84 +1,58 @@
 import React, { useState } from "react";
 import "./App.css";
 import { TextField, Typography } from "@material-ui/core";
-import TempoSlider from "./components/TempoSlider/TempoSlider";
-import FieldInput from "./components/FieldInput/FieldInput";
-import DisplayResults from "./components/DisplayResults/DisplayResults";
+import ShowResults from "./components/ShowResults";
+import GenericSlider from "./components/GenericSlider/GenericSlider";
 
 function App() {
-  // location variables - all in yards
-  const [drumX, setDrumX] = useState(0);
-  const [drumY, setDrumY] = useState(0);
-
-  const [hornX, setHornX] = useState(0);
-  const [hornY, setHornY] = useState(18);
-
-  const [boxY, setBoxY] = useState(5);
-  const [boxZ, setBoxZ] = useState(5);
-  const handleBoxY = (event) => {
-    setBoxY(event.target.value);
-  };
-  const handleBoxZ = (event) => {
-    setBoxZ(event.target.value);
-  };
-
-  // tempo
-  const [tempo, setTempo] = useState(160);
+  const [numApplicants, setNumApplicants] = useState(20000);
+  const [admitRate, setAdmitRate] = useState(5);
+  const [luckRate, setLuckRate] = useState(20);
 
   return (
     <div className="app-container">
       <div id="header">
-        <Typography variant="h4">Sound Delay Demo</Typography>
-        <DisplayResults
-          drumX={drumX}
-          drumY={drumY}
-          hornX={hornX}
-          hornY={hornY}
-          boxY={boxY}
-          boxZ={boxZ}
-          tempo={tempo}
-        />
+        <Typography variant="h4">
+          How important is luck in admission decisions?
+        </Typography>
       </div>
 
-      <FieldInput
-        drumX={drumX}
-        setDrumX={setDrumX}
-        drumY={drumY}
-        setDrumY={setDrumY}
-        hornX={hornX}
-        setHornX={setHornX}
-        hornY={hornY}
-        setHornY={setHornY}
-      />
-
       <form>
-        <div className="number-inputs">
-          <TextField
-            id="boxY"
-            label="Box to F.Sideline (yards)"
-            type="number"
-            variant="outlined"
-            value={boxY}
-            onChange={handleBoxY}
-          />
-          <TextField
-            id="boxZ"
-            label="Box Height (yards)"
-            type="number"
-            variant="outlined"
-            value={boxZ}
-            onChange={handleBoxZ}
-          />
-        </div>
-
         <br />
-        <TempoSlider tempo={tempo} handleChange={setTempo} />
+        <GenericSlider
+          name="Number of applicants"
+          value={numApplicants}
+          handleChange={setNumApplicants}
+          min={0}
+          max={100000}
+        />
+        <GenericSlider
+          name="Percentage accepted"
+          value={admitRate}
+          handleChange={setAdmitRate}
+          min={0}
+          max={100}
+        />
+        <GenericSlider
+          name="Luck factor (percentage of decision based on luck)"
+          value={luckRate}
+          handleChange={setLuckRate}
+          min={0}
+          max={100}
+        />
+        <ShowResults
+          numApplicants={numApplicants}
+          numAccepted={(numApplicants * admitRate) / 100}
+          luckImportance={luckRate / 100}
+        />
       </form>
 
       <p>
-        By Hannah Cussen,{" "}
-        <a href="https://github.com/hcussen/SoundDelay">Repo on GitHub</a>,
-        Deployed with Vercel
+        By Kevin Li,{" "}
+        <a href="https://github.com/L235/skill-vs-luck">Repo on GitHub</a>.{" "}
+        <br />
+        Based on a design by{" "}
+        <a href="https://github.com/hcussen">Hannah Cussen</a>.
       </p>
     </div>
   );
