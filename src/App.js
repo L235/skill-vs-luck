@@ -5,7 +5,7 @@ import ShowResults from "./components/ShowResults";
 import GenericSlider from "./components/GenericSlider/GenericSlider";
 
 function App() {
-  const [numApplicants, setNumApplicants] = useState(20000);
+  const [numApplicants, setNumApplicants] = useState(50000);
   const [admitRate, setAdmitRate] = useState(5);
   const [luckRate, setLuckRate] = useState(20);
 
@@ -24,7 +24,7 @@ function App() {
           value={numApplicants}
           handleChange={setNumApplicants}
           min={0}
-          max={100000}
+          max={200000}
         />
         <GenericSlider
           name="Percentage accepted"
