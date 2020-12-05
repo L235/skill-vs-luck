@@ -51,8 +51,7 @@ const ShowResults = ({ numApplicants, numAccepted, luckImportance }) => {
       {results.percentInBoth.toFixed(2)}%) would have been accepted based only
       on merit. <b>{numAccepted - results.numInBoth} </b>(
       {(100 - results.percentInBoth).toFixed(2)}
-      %) applicants who would have been accepted if decisions were based only on
-      merit were instead denied.
+      %) would not have been admitted if decisions were based only on merit.
       <p />
       The average successful applicant had luck in the{" "}
       {results.acceptedAvgLuckPercentile.toFixed(2)}th percentile, whereas if
