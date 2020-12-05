@@ -58,7 +58,7 @@ const ShowResults = ({ numApplicants, numAccepted, luckImportance }) => {
       ).toFixed(2)}
       %) applicants who would have been accepted if decisions were based only on
       merit were instead denied.
-      <br />
+      <p />
       The average successful applicant had luck in the{" "}
       {(100 * parseFloat(results.acceptedAvgLuck)).toFixed(2)}th percentile,
       whereas if luck had played no role, the average successful applicant would
