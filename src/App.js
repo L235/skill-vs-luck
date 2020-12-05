@@ -10,7 +10,7 @@ import MusicNoteIcon from "@material-ui/icons/MusicNote";
 function App() {
   const initNumApplicants = 50000;
   const initAdmitRate = 5;
-  const initLuckRate = 5;
+  const initLuckRate = 20;
 
   const [numApplicants, setNumApplicants] = useState(initNumApplicants);
   const [admitRate, setAdmitRate] = useState(initAdmitRate);
