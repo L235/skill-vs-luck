@@ -30,11 +30,17 @@ const ShowResults = ({ numApplicants, numAccepted, luckImportance }) => {
     const inBoth = acceptedApplicants.filter((value) =>
       bestApplicants.includes(value)
     );
+    const numInBoth = inBoth.length;
+    const percentInBoth = parseFloat(100 * (numInBoth / numAccepted));
+    const acceptedAvgLuck =
+      acceptedApplicants.reduce((total, a) => total + a.luck, 0) /
+      acceptedApplicants.length;
+    const acceptedAvgLuckPercentile = 100 * parseFloat(acceptedAvgLuck);
     const out = {
-      numInBoth: inBoth.length,
-      acceptedAvgLuck:
-        acceptedApplicants.reduce((total, a) => total + a.luck, 0) /
-        acceptedApplicants.length,
+      numInBoth,
+      acceptedAvgLuck,
+      percentInBoth,
+      acceptedAvgLuckPercentile,
     };
     setResults(out);
   };
@@ -49,19 +55,16 @@ const ShowResults = ({ numApplicants, numAccepted, luckImportance }) => {
   return (
     <div>
       Of the {numAccepted} applicants accepted, <b>{results.numInBoth}</b> (
-      {parseFloat(100 * (results.numInBoth / numAccepted)).toFixed(2)}%) would
-      have been accepted based only on merit.{" "}
-      <b>{numAccepted - results.numInBoth} </b>(
-      {parseFloat(
-        100 * ((numAccepted - results.numInBoth) / numAccepted)
-      ).toFixed(2)}
+      {results.percentInBoth.toFixed(2)}%) would have been accepted based only
+      on merit. <b>{numAccepted - results.numInBoth} </b>(
+      {(100 - results.percentInBoth).toFixed(2)}
       %) applicants who would have been accepted if decisions were based only on
       merit were instead denied.
       <p />
       The average successful applicant had luck in the{" "}
-      {(100 * parseFloat(results.acceptedAvgLuck)).toFixed(2)}th percentile,
-      whereas if luck had played no role, the average successful applicant would
-      have had luck in the 50th percentile.
+      {results.acceptedAvgLuckPercentile.toFixed(2)}th percentile, whereas if
+      luck had played no role, the average successful applicant would have had
+      luck in the 50th percentile.
     </div>
   );
 };
