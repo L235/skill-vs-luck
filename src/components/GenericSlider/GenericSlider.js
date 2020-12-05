@@ -1,15 +1,27 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { Grid, Typography, Slider, Input } from "@material-ui/core";
 import "./GenericSlider.css";
 
 /*droppable field location */
-const GenericSlider = ({ name, value, handleChange, min, max, icon }) => {
+const GenericSlider = ({ name, initValue, handleChange, min, max, icon }) => {
+  const [value, setValue] = useState(initValue);
+
+  useEffect(() => {
+    const timeoutID = setTimeout(() => {
+      handleChange(value);
+    }, 500);
+
+    return () => {
+      clearTimeout(timeoutID);
+    };
+  }, [value, handleChange]);
+
   const handleSliderChange = (event, newValue) => {
-    handleChange(newValue);
+    setValue(newValue);
   };
 
   const handleInputChange = (event) => {
-    handleChange(event.target.value === "" ? "" : Number(event.target.value));
+    setValue(event.target.value === "" ? "" : Number(event.target.value));
   };
 
   return (

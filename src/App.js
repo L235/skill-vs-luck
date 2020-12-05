@@ -8,9 +8,13 @@ import CheckIcon from "@material-ui/icons/Check";
 import MusicNoteIcon from "@material-ui/icons/MusicNote";
 
 function App() {
-  const [numApplicants, setNumApplicants] = useState(50000);
-  const [admitRate, setAdmitRate] = useState(5);
-  const [luckRate, setLuckRate] = useState(20);
+  const initNumApplicants = 50000;
+  const initAdmitRate = 5;
+  const initLuckRate = 5;
+
+  const [numApplicants, setNumApplicants] = useState(initNumApplicants);
+  const [admitRate, setAdmitRate] = useState(initAdmitRate);
+  const [luckRate, setLuckRate] = useState(initLuckRate);
 
   return (
     <div className="app-container">
@@ -24,7 +28,7 @@ function App() {
         <br />
         <GenericSlider
           name="Number of applicants"
-          value={numApplicants}
+          initValue={initNumApplicants}
           handleChange={setNumApplicants}
           min={0}
           max={200000}
@@ -32,7 +36,7 @@ function App() {
         />
         <GenericSlider
           name="Percentage accepted"
-          value={admitRate}
+          initValue={initAdmitRate}
           handleChange={setAdmitRate}
           min={0}
           max={100}
@@ -40,7 +44,7 @@ function App() {
         />
         <GenericSlider
           name="Luck factor (percentage of decision based on luck)"
-          value={luckRate}
+          initValue={initLuckRate}
           handleChange={setLuckRate}
           min={0}
           max={100}
