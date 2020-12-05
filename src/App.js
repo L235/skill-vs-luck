@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import "./App.css";
-import { TextField, Typography } from "@material-ui/core";
+import { Typography } from "@material-ui/core";
 import ShowResults from "./components/ShowResults";
 import GenericSlider from "./components/GenericSlider/GenericSlider";
 
