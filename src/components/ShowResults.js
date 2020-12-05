@@ -7,11 +7,8 @@ const Applicant = function () {
 
 const ShowResults = ({ numApplicants, numAccepted, luckImportance }) => {
   const [results, setResults] = useState(null);
-  const calculateRamdomizedResults = (
-    numApplicants,
-    numAccepted,
-    luckImportance
-  ) => {
+
+  useEffect(() => {
     const skillImportance = 1 - luckImportance;
     const applicants = [];
     for (let i = 0; i < numApplicants; i++) {
@@ -43,10 +40,6 @@ const ShowResults = ({ numApplicants, numAccepted, luckImportance }) => {
       acceptedAvgLuckPercentile,
     };
     setResults(out);
-  };
-
-  useEffect(() => {
-    calculateRamdomizedResults(numApplicants, numAccepted, luckImportance);
   }, [numApplicants, numAccepted, luckImportance]);
 
   if (results === null) {
