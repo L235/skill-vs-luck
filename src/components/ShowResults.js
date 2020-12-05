@@ -48,11 +48,21 @@ const ShowResults = ({ numApplicants, numAccepted, luckImportance }) => {
   }
   return (
     <div>
-      Of the {numAccepted} applicants accepted, {results.numInBoth} (
+      Of the {Math.floor(numAccepted)} applicants accepted,{" "}
+      <b>{results.numInBoth}</b> (
       {parseFloat(100 * (results.numInBoth / numAccepted)).toFixed(2)}%) would
-      have been accepted based only on merit. The average successful applicant
-      had luck in the {(100 * parseFloat(results.acceptedAvgLuck)).toFixed(2)}th
-      percentile.
+      have been accepted based only on merit.{" "}
+      <b>{numAccepted - results.numInBoth} </b>(
+      {parseFloat(
+        100 * ((numAccepted - results.numInBoth) / numAccepted)
+      ).toFixed(2)}
+      %) applicants who would have been accepted if decisions were based only on
+      merit were instead denied.
+      <br />
+      The average successful applicant had luck in the{" "}
+      {(100 * parseFloat(results.acceptedAvgLuck)).toFixed(2)}th percentile,
+      whereas if luck had played no role, the average successful applicant would
+      have had luck in the 50th percentile.
     </div>
   );
 };
