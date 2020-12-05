@@ -52,7 +52,7 @@ function App() {
         />
         <ShowResults
           numApplicants={numApplicants}
-          numAccepted={(numApplicants * admitRate) / 100}
+          numAccepted={Math.floor((numApplicants * admitRate) / 100)}
           luckImportance={luckRate / 100}
         />
       </form>

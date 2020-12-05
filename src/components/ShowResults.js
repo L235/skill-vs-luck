@@ -48,11 +48,10 @@ const ShowResults = ({ numApplicants, numAccepted, luckImportance }) => {
   }
   return (
     <div>
-      Of the {Math.floor(numAccepted)} applicants accepted,{" "}
-      <b>{results.numInBoth}</b> (
+      Of the {numAccepted} applicants accepted, <b>{results.numInBoth}</b> (
       {parseFloat(100 * (results.numInBoth / numAccepted)).toFixed(2)}%) would
       have been accepted based only on merit.{" "}
-      <b>{Math.floor(numAccepted) - results.numInBoth} </b>(
+      <b>{numAccepted - results.numInBoth} </b>(
       {parseFloat(
         100 * ((numAccepted - results.numInBoth) / numAccepted)
       ).toFixed(2)}
